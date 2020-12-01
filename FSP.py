@@ -35,7 +35,13 @@ class startgame(Frame):
     def __init__(self, master):
         Frame.__init__(self, master, width=600, height=400)
         back = Button(self, text="뒤로 가기", command=lambda: master.switch_frame(main))
-        back.pack(side="left", anchor="n")
+        back.place(x='0', y='0')
+        how_play_game = Label(self, text="게임 방법\n\n"
+                                         "-원하는 테마를 클릭하고 선택\n 버튼을 누릅니다.\n"
+                                         "-게임 시작 버튼을 누릅니다.\n"
+                                         "-게임창 우측 상단에 있는 시작을\n 누르면 이미지가 잠깐 보여집니다.\n"
+                                         "-그 밑에 비어있는 텍스트 상자에\n 동일한 이미지의 칸의 번호를 각각\n 입력한 뒤 선택 버튼을 누릅니다.", justify='left', font=("맑은 고딕", 12))
+        how_play_game.place(x='50', y='50')
         self.listbox = Listbox(self, height=7)
         files = os.listdir('./themes/')
         for (i, file) in enumerate(files):
@@ -60,6 +66,12 @@ class setting_theme(Frame):
         Frame.__init__(self, master, width=600, height=400)
         back = Button(self, text="뒤로 가기", command=lambda: master.switch_frame(main))
         back.pack(side="left", anchor="n")
+        how_add_theme = Label(self, text="테마 추가 방법\n\n"
+                                         "-이미지 선택을 눌러 8개의\n 사진을 가져옵니다.\n"
+                                         "-게임 시작 버튼을 누릅니다\n"
+                                         "-사진 파일 png, jpg만 가능하며\n 되도록이면 1:1 비율의\n 사진을 권장합니다.\n"
+                                         "-8개를 추가한 후 테마 저장을\n 누른 뒤 게임시작으로 들어가\n 테마가 추가 된 것을 확인합니다.", justify='left', font=("맑은 고딕", 12))
+        how_add_theme.place(x='50', y='50')
         self.listbox = Listbox(self, height=9)
         self.listbox.place(x="350", y="80")
         Button(self, text="이미지 선택", command=self.select_pic).place(x='415', y='235')
